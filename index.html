@@ -14,7 +14,7 @@
     }
     header {
       background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
-      padding: 60px 20px 40px;
+      padding: 80px 20px 40px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -27,13 +27,37 @@
       font-size: 1.2em;
       color: #ccc;
     }
+    .rocket-container {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
     .rocket {
       font-size: 3em;
-      animation: orbit 6s linear infinite;
+      z-index: 2;
+      position: relative;
     }
-    @keyframes orbit {
-      0% { transform: rotate(0deg) translateX(0); }
-      100% { transform: rotate(360deg) translateX(0); }
+    .particles {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100px;
+      height: 100px;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .particle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: #00ff99;
+      border-radius: 50%;
+      animation: sparkle 2s infinite ease-in-out;
+    }
+    @keyframes sparkle {
+      0% { transform: scale(1) translate(0, 0); opacity: 1; }
+      50% { transform: scale(1.5) translate(20px, -20px); opacity: 0.5; }
+      100% { transform: scale(1) translate(0, 0); opacity: 1; }
     }
     .section {
       padding: 40px 20px;
@@ -53,12 +77,12 @@
       border: none;
       border-radius: 8px;
     }
-    .benefits, .logros, .no-es-para-vos {
+    .benefits, .logros, .no-es-para-vos, .pasos {
       display: grid;
       grid-template-columns: 1fr;
       gap: 20px;
     }
-    .benefits div, .logros div, .no-es-para-vos div {
+    .benefits div, .logros div, .no-es-para-vos div, .pasos div {
       background: #1a1a1a;
       padding: 20px;
       border-radius: 8px;
@@ -94,17 +118,43 @@
       50% { transform: scale(1.05); }
       100% { transform: scale(1); }
     }
+    .botones-extra {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 30px;
+    }
+    .botones-extra a {
+      background: #00ff99;
+      color: #000;
+      text-align: center;
+      padding: 15px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 0 10px rgba(0,255,153,0.3);
+    }
     @media (max-width: 600px) {
       iframe { height: 250px; }
       header h1 { font-size: 1.8em; }
+      header p { font-size: 1em; }
       .cta-flotante { font-size: 0.9em; padding: 10px 20px; }
+      .botones-extra a { font-size: 0.9em; padding: 12px; }
     }
   </style>
 </head>
 <body>
 
 <header>
-  <div class="rocket">🚀</div>
+  <div class="rocket-container">
+    <div class="rocket">🚀</div>
+    <div class="particles">
+      <div class="particle" style="top:10%; left:20%; animation-delay:0s;"></div>
+      <div class="particle" style="top:30%; left:70%; animation-delay:0.3s;"></div>
+      <div class="particle" style="top:60%; left:40%; animation-delay:0.6s;"></div>
+      <div class="particle" style="top:80%; left:80%; animation-delay:0.9s;"></div>
+    </div>
+  </div>
   <h1>La oportunidad que transforma tu negocio o te lanza desde cero</h1>
   <p>Un sistema probado para escalar, vender y posicionarte. No importa si estás empezando.</p>
 </header>
@@ -114,65 +164,20 @@
 </section>
 
 <section class="section">
-  <h2>Resumen del video</h2>
-  <ul>
-    <li>Cómo escalar tu negocio sin depender de redes sociales</li>
-    <li>Qué errores evitar si estás empezando desde cero</li>
-    <li>Cómo recuperar tu inversión con una sola venta</li>
-  </ul>
-</section>
-
-<section class="section">
-  <h2>Esto es lo que vas a lograr</h2>
-  <div class="logros">
-    <div>✅ Tener tu primer sistema de ventas funcionando</div>
-    <div>✅ Aprender lo que no enseñan en ningún curso tradicional</div>
-    <div>✅ Posicionarte como referente en tu nicho</div>
+  <h2>Tu camino en 3 pasos</h2>
+  <div class="pasos">
+    <div>🚀 Mirás el VSL y entendés el sistema</div>
+    <div>🎯 Reservás tu acceso exclusivo por WhatsApp</div>
+    <div>💼 Aplicás y empezás a vender</div>
   </div>
 </section>
 
-<section class="section">
-  <h2>Beneficios concretos</h2>
-  <div class="benefits">
-    <div>📈 Escalás tu negocio sin depender de redes</div>
-    <div>🧠 Aprendés lo que no enseñan en ningún curso</div>
-    <div>💰 Recuperás tu inversión con una sola venta</div>
-  </div>
+<section class="section botones-extra">
+  <a href="https://wa.me/5492610000000?text=Hola%20quiero%20reservar%20mi%20acceso%20al%20infoproducto" target="_blank">Reservar acceso por WhatsApp</a>
+  <a href="https://wa.me/?text=Che%20mirá%20esta%20landing%20con%20una%20oportunidad%20única%20para%20emprendedores:%20https://tulanding.com" target="_blank">Compartir con un amigo</a>
 </section>
 
-<section class="section">
-  <h2>Esto NO es para vos si…</h2>
-  <div class="no-es-para-vos">
-    <div>❌ Buscás fórmulas mágicas sin esfuerzo</div>
-    <div>❌ No estás dispuesto a aplicar lo que aprendés</div>
-    <div>❌ Querés resultados sin invertir tiempo</div>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Testimonios de emprendedores argentinos</h2>
-  <div class="testimonios">
-    <div class="testimonio">
-      <strong>Martina, Córdoba</strong><br>
-      “Con este sistema vendí más en 2 semanas que en los últimos 3 meses.”
-    </div>
-    <div class="testimonio">
-      <strong>Lucas, Rosario</strong><br>
-      “No sabía nada de ventas. Hoy tengo mi primer negocio funcionando.”
-    </div>
-    <div class="testimonio">
-      <strong>Diego, Buenos Aires</strong><br>
-      “Lo que aprendí acá no lo vi en ningún curso. Vale cada peso.”
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Garantía y respaldo</h2>
-  <p>Este sistema está respaldado por <strong>CTA</strong>, con más de 1,000 emprendedores capacitados en toda Latinoamérica. Tu éxito es nuestra misión.</p>
-</section>
-
-<div class="cta-flotante" onclick="window.location.href='#'">
+<div class="cta-flotante" onclick="window.location.href='https://wa.me/5492610000000?text=Hola%20quiero%20reservar%20mi%20acceso%20al%20infoproducto'">
   Accedé ahora a la oportunidad
 </div>
 
